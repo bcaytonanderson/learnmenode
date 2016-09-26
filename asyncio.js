@@ -11,24 +11,27 @@
 // Buffer object.
 
 // =============================================================
-//First attempt.
 
-var fs = require('fs');
+//FIRST ATTEMPT.
 
-var lines = 0;
+// var fs = require('fs');
 
-function linecount (callback) {
-	fs.readFile(process.argv[2], 'utf8', function doneReading(err, fileContents) {
-		lines = fileContents.split('\n').length -1;
-		callback();
-	})
-};
+// var lines = 0;
 
-function logLineCount() {
-	console.log(lines);
-};
+// function linecount (callback) {
+// 	fs.readFile(process.argv[2], 'utf8', function doneReading(err, fileContents) {
+// 		lines = fileContents.split('\n').length -1;
+// 		callback();
+// 	})
+// };
 
-linecount(logLineCount);
+// function logLineCount() {
+// 	console.log(lines);
+// };
+
+// linecount(logLineCount);
+
+// =============================================================
 
 //The official solution is as follows:
 
@@ -42,3 +45,18 @@ linecount(logLineCount);
 // })  
 
 // My solution was far more verbose. First they required fs, then set a variable file which would be the path to the file the program would read. Next, they call fs.readFile(), supplying it with file as an argument, and writing the callback as the second argument. They then create a variable, lines, and perform the necessary functions to return the number of new lines. Then, within the callback, they console.log the return.
+
+//==================================================================================
+
+//REFACTORED
+
+//Taking what I learned from studying their solution, I am rewriting the program to be more concise.
+
+var fs = require('fs');
+
+fs.readFile(process.argv[2],'utf8', function(err, contents) {
+	var lines = contents.split('\n').length - 1;
+	console.log(lines);
+});
+
+//It seems my way might just make the code look more confusing. It is more straight-forward to create the file variable as the official answer did, and then use the .toString() method on it within the callback. My version still fulfills the requirements of the lesson, though.
