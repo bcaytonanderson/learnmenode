@@ -1,0 +1,1 @@
+I'm teaching myself node by using the Learn You Node tutorials. I want to have this on GitHub so I can access and review my lessons anywhere and show my progress in learning.
